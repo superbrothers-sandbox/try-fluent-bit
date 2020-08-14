@@ -6,3 +6,7 @@ commonLabels:
 resources:
 - deployment.yaml
 - service.yaml
+configMapGenerator:
+- name: grafana-datasources
+  files:
+  - config/datasources/prometheus.yaml
