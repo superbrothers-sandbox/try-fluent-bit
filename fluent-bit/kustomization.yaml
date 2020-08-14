@@ -6,7 +6,17 @@ commonLabels:
 resources:
 - namespace.yaml
 - serviceaccount.yaml
-- configmap.yaml
+- clusterrole.yaml
+- clusterrolebinding.yaml
 - daemonset.yaml
 - service.yaml
 - servicemonitor.yaml
+configMapGenerator:
+- name: fluent-bit-config
+  files:
+  - config/fluent-bit-input.conf
+  - config/fluent-bit-filter.conf
+  - config/fluent-bit-output.conf
+  - config/fluent-bit-service.conf
+  - config/fluent-bit.conf
+  - config/parsers.conf
