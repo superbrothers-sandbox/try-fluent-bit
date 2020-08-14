@@ -3,14 +3,19 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "Prometheus",
         "enable": true,
+        "expr": "sum(fluentbit_build_info{namespace=\"logging\", service=\"fluent-bit\"}) by (version)",
         "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
+        "iconColor": "#DEB6F2",
         "limit": 100,
-        "name": "Annotations & Alerts",
+        "name": "Version information",
         "showIn": 0,
-        "type": "dashboard"
+        "step": "",
+        "textFormat": "",
+        "titleFormat": "fluent-bit v{{ version }}",
+        "type": "dashboard",
+        "useValueForTime": false
       }
     ]
   },
