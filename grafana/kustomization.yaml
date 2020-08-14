@@ -10,3 +10,7 @@ configMapGenerator:
 - name: grafana-datasources
   files:
   - config/datasources/prometheus.yaml
+- name: grafana-dashboards
+  files:
+  - config/dashboards/default.yaml
+  - config/dashboards/fluent-bit-stats.json
