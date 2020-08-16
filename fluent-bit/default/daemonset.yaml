@@ -32,13 +32,17 @@ spec:
         - name: fluent-bit-config
           mountPath: /fluent-bit/etc/
           readOnly: true
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
         securityContext:
           privileged: true
-      - name: busybox
-        image: busybox
-        volumeMounts:
-        - name: varlog
-          mountPath: /var/log
       terminationGracePeriodSeconds: 10
       volumes:
       - name: varlog

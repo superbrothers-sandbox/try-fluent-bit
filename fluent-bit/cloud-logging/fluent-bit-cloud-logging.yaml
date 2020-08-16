@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluent-bit
+spec:
+  template:
+    spec:
+      containers:
+      - name: fluent-bit
+        env:
+        - name: GOOGLE_SERVICE_CREDENTIALS
+          value: /fluent-bit-credentials/google-service-credentials.json
+        volumeMounts:
+        - name: fluent-bit-credentials
+          mountPath: /fluent-bit-credentials
+          readOnly: true
+      volumes:
+      - name: fluent-bit-credentials
+        secret:
+          secretName: fluent-bit-credentials
